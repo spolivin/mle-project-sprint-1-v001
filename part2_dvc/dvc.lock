@@ -18,6 +18,10 @@ stages:
       hash: md5
       md5: 20358176885c16bd8cf79ae92e5c8e29
       size: 11628862
+      cloud:
+        my_storage:
+          etag: 20358176885c16bd8cf79ae92e5c8e29
+          version_id: 00061A8C5A4B2260
   fit_model:
     cmd: python scripts/fit.py
     deps:
@@ -37,6 +41,10 @@ stages:
       hash: md5
       md5: c8e65ee9307035834cf7e26ed6401e19
       size: 1122227
+      cloud:
+        my_storage:
+          etag: c8e65ee9307035834cf7e26ed6401e19
+          version_id: 00061A8C5A449D86
   evaluate_model:
     cmd: python scripts/evaluate.py
     deps:
@@ -59,3 +67,7 @@ stages:
       hash: md5
       md5: d8e9d0290a744097a10b3128e762b7fe
       size: 69
+      cloud:
+        my_storage:
+          etag: d8e9d0290a744097a10b3128e762b7fe
+          version_id: 00061A8C5A4596F1
