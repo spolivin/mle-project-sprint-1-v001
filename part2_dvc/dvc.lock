@@ -1,0 +1,61 @@
+schema: '2.0'
+stages:
+  get_data:
+    cmd: python scripts/data.py
+    deps:
+    - path: scripts/data.py
+      hash: md5
+      md5: dc6020595aed72f6625c0744e5386c17
+      size: 1347
+    params:
+      params.yaml:
+        cols_to_drop:
+        - id
+        - build_year
+        index_col: flat_id
+    outs:
+    - path: data/initial_data_flats.csv
+      hash: md5
+      md5: 20358176885c16bd8cf79ae92e5c8e29
+      size: 11628862
+  fit_model:
+    cmd: python scripts/fit.py
+    deps:
+    - path: data/initial_data_flats.csv
+      hash: md5
+      md5: 20358176885c16bd8cf79ae92e5c8e29
+      size: 11628862
+    - path: scripts/fit.py
+      hash: md5
+      md5: e5236327a8529ae94c70814001b364e0
+      size: 1644
+    params:
+      params.yaml:
+        target_col: price
+    outs:
+    - path: models/fitted_model_flats.pkl
+      hash: md5
+      md5: c8e65ee9307035834cf7e26ed6401e19
+      size: 1122227
+  evaluate_model:
+    cmd: python scripts/evaluate.py
+    deps:
+    - path: models/fitted_model_flats.pkl
+      hash: md5
+      md5: c8e65ee9307035834cf7e26ed6401e19
+      size: 1122227
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: dcf7b82186ea126e399efcd3d0a6df30
+      size: 1137
+    params:
+      params.yaml:
+        metrics: neg_root_mean_squared_error
+        n_jobs: -1
+        n_splits: 5
+        target_col: price
+    outs:
+    - path: cv_results/cv_res_flats.json
+      hash: md5
+      md5: d8e9d0290a744097a10b3128e762b7fe
+      size: 69

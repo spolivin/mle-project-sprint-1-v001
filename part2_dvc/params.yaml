@@ -1,0 +1,6 @@
+index_col: 'flat_id'
+target_col: 'price'
+cols_to_drop: ['id', 'build_year']
+n_splits: 5
+metrics: 'neg_root_mean_squared_error'
+n_jobs: -1

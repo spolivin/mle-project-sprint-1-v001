@@ -1,0 +1,31 @@
+stages:
+  get_data:
+    cmd: python scripts/data.py
+    deps:
+      - scripts/data.py
+    params:
+      - index_col
+      - cols_to_drop
+    outs:
+      - data/initial_data_flats.csv
+  fit_model:
+    cmd: python scripts/fit.py
+    deps:
+      - data/initial_data_flats.csv
+      - scripts/fit.py
+    params:
+      - target_col
+    outs:
+      - models/fitted_model_flats.pkl
+  evaluate_model:
+    cmd: python scripts/evaluate.py
+    deps:
+      - models/fitted_model_flats.pkl
+      - scripts/evaluate.py
+    params:
+      - target_col
+      - n_splits
+      - n_jobs
+      - metrics
+    outs:
+      - cv_results/cv_res_flats.json
