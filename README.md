@@ -1,10 +1,22 @@
-# Разработка пайплайнов подготовки данных и обучения модели [Проект 1 спринта]
+# Building pipeline for data preparation and model training 
 
+## Description
 
-S3 Bucket Name: `s3-student-mle-20240523-34f645dbbf`
+Yandex Real Estate represents a marketplace for renting and purchasing residential and commercial real estate. Company acts as a middleman between sellers and potential buyers.
 
+### Problem
 
-## Этап 1 - Сбор данных
+The key objective of the company is to make the communication between both sides efficient and secure, since during negotiations there appears a number of questions which may result in arguments and therefore the deal will not be struck. For such a marketplace this is not an desirable outcome and that is why product managers stated exploring potential directions of growth of the company and discovered that disagreements often arise due to the price of the real estate object. This is about sellers and buyers having different opinions about the market price of a flat - it is important to enables them to come to a mutual agreement.
+
+Product managers hypothesize that the mean monthly number of deal may increase if the business sides will have an opportunity to conduct objective external evaluation of the real estate objects.
+
+### Business task
+
+Creating an MVP of the algorithm based on machine learning for evaluating the value of real estate objects provided their characteristics. 
+
+## Process 
+
+### Stage 1 - Data collection
 
 | Name | File/dir name | Location | 
 | :---------------------- | :---------------------- | :---------------------- |
@@ -12,7 +24,7 @@ S3 Bucket Name: `s3-student-mle-20240523-34f645dbbf`
 | DAG-plugins | `real_estate.py` | [Link](part1_airflow/plugins/steps/real_estate.py)|
 | Telegram-callbacks | `messages.py` | [Link](part1_airflow/plugins/steps/messages.py)|
 
-## Этап 2 - Очистка данных
+### Stage 2 - Data cleaning
 
 | Name | File/dir name | Location | 
 | :---------------------- | :---------------------- | :---------------------- |
@@ -21,7 +33,7 @@ S3 Bucket Name: `s3-student-mle-20240523-34f645dbbf`
 | Telegram-callbacks | `messages.py` | [Link](part1_airflow/plugins/steps/messages.py)|
 | Jupyter notebook | `data_cleaning.py` | [Link](part1_airflow/notebooks/data_cleaning.ipynb)|
 
-## Этап 3 - Создание DVC-пайплайна обучения модели
+### Stage 3 - Creating DVC-pipeline of model training
 
 | Name | File/dir name | Location | 
 | :---------------------- | :---------------------- | :---------------------- |
